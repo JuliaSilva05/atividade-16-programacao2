@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+  FILE *arquivo = fopen("arquivo.txt","w");
+  printf("Escreva um pequeno texto:\n");
+  char texto[100];
+  fgets(texto,100,stdin);
+  fprintf(arquivo,"%s",texto);
+
+  fclose(arquivo);
+  //mostrar quantas letras são vogais;
+  arquivo = fopen("arquivo.txt","r");
+  int vogais = 0;
+  for (int i = 0;texto[i] != '\n';i++){
+    fscanf(arquivo,"%c",&texto[i]);
+    if (texto[i] == 'a' || texto[i] == 'e' || texto[i] == 'i' || texto[i] == 'o' || texto[i] == 'u'||texto[i]=='A'||texto[i]=='E'||texto[i]=='I'||texto[i]=='O'||texto[i]=='U'){
+      vogais++;
+    }
+  }
+  printf("O texto possui %d vogais\n",vogais);
+  fclose(arquivo);
+  
+  return 0;
+}
