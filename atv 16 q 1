@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+  
+  FILE *arquivo = fopen("arq.txt","w");
+  char vetor[50];
+  int i = 0;
+  char caractere;
+  printf("Digite caracteres:\n");
+  do{
+    scanf("%s",&caractere);
+    fprintf(arquivo,"%s, ",&caractere);
+  } while (caractere != '0');
+  
+  fclose(arquivo);
+
+  arquivo = fopen("arq.txt","r");
+  printf("Caracteres digitados: \n");
+  do{
+    fscanf(arquivo,"%c, ",&caractere);
+    printf("%c, ",caractere);
+  } while(caractere != '0');
+    
+  fclose(arquivo);
+  
+  return 0;
+}
