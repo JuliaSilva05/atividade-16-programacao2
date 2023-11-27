@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+  FILE *arquivo = fopen("arquivo.txt","w");
+  printf("Escreva um pequeno texto:\n");
+  char texto[100];
+  fgets(texto,100,stdin);
+  fprintf(arquivo,"%s",texto);
+
+  fclose(arquivo);
+  //mostrar quantas letras são vogais;
+  arquivo = fopen("arquivo.txt","r");
+  int vezes = 0;
+  char caractere;
+  printf("Diga um caractere para buscar: ");
+  scanf("%c",&caractere);
+  for (int i = 0;texto[i] != '\n';i++){
+    fscanf(arquivo,"%c",&texto[i]);
+    if (texto[i] == caractere){
+      vezes++;
+    }
+  }
+  if (vezes != 0){
+    printf("O caractere aparece %d vezes\n",vezes);
+  } else{
+    printf("Caractere não encontrado!\n");
+  }
+  
+  fclose(arquivo);
+
+  return 0;
+}
