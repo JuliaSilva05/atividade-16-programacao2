@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct cadastro{
+  char nome[50];
+  float preco;
+};
+
+int main(void) {
+  int quant_cadastros = 1;
+  char continuar;
+  struct cadastro c;
+  float compra = 0;
+
+  FILE *arquivo = fopen("arquivo.txt","w");
+  do{
+    setbuf(stdin,NULL);
+    printf("Diga o nome do produto: ");
+    fgets(c.nome, 50, stdin);
+    printf("Diga o preço desse produto: ");
+    scanf("%f",&c.preco);
+    fprintf(arquivo,"Nome: %sTelefone: %.2f\n\n",c.nome,c.preco);
+    printf("Adicionar mais? (s/n)");
+    scanf("%s",&continuar);
+    compra = compra + c.preco;
+  } while (continuar == 's');
+
+  printf("\nA compra total deu R$ %.2f\n",compra);
+
+  fclose(arquivo);
+
+  return 0;
+}
