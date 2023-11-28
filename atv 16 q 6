@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+  char nome[20];
+  printf("Digite o nome do arquivo: ");
+  scanf("%s",nome);
+  strcat(nome,".txt");
+  FILE *arquivo = fopen(nome,"w");
+  printf("Escreva o conteúdo do arquivo:\n");
+  char texto[100];
+  setbuf(stdin,NULL);
+  fgets(texto,100,stdin);
+  fprintf(arquivo,"%s",texto);
+
+  fclose(arquivo);
+  //mostrar quantas letras são vogais;
+  int vezes = 0;
+
+  printf("Digite uma palavra para buscar: ");
+  char palavra[15];
+  scanf("%s",palavra);
+
+  arquivo = fopen(nome,"r"); 
+
+  //ver quantas vezes uma palavra é repetida dentro do texto
+  char linha[100];
+  while(fscanf(arquivo,"%s",linha) != EOF){
+    if(strcmp(linha,palavra) == 0){
+      vezes++;
+    }
+  }
+
+
+  if (vezes != 0){
+    printf("A palavra aparece %d vezes\n",vezes);
+  } else{
+    printf("Palavra não encontrada!\n");
+  }
+
+  fclose(arquivo);
+
+  return 0;
+}
