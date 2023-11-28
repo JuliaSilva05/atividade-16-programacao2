@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct cadastro{
+  char nome[50];
+  int telefone;
+};
+
+int main(void) {
+  int quant_cadastros = 1;
+  char continuar;
+  struct cadastro c;
+
+  FILE *arquivo = fopen("arquivo.txt","w");
+  do{
+    setbuf(stdin,NULL);
+    printf("Diga um nome: ");
+    fgets(c.nome, 50, stdin);
+    printf("Diga o telefone dessa pessoa: ");
+    scanf("%d",&c.telefone);
+    fprintf(arquivo,"Nome: %sTelefone: %d\n\n",c.nome,c.telefone);
+  } while (c.telefone);
+
+  fclose(arquivo);
+  
+  return 0;
+}
