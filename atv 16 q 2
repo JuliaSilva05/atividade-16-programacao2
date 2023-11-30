@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void) {
+  FILE *arquivo = fopen("archive.txt","w");
+  int linhas = 0;
+  char conteudo[400];
+  printf("Escreva o conteúdo do arquivo (escreva 0 para parar):\n");
+  do{
+    arquivo = fopen("archive.txt","a");
+    fgets(conteudo,400,stdin);
+    fprintf(arquivo,"%s",conteudo);
+    fclose(arquivo);
+    linhas++;
+  } while (conteudo[0] != '0');
+
+  printf("O arquivo possui %d linhas",linhas-1);
+
+  return 0;
+}
